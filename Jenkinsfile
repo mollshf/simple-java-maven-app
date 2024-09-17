@@ -1,5 +1,5 @@
 node {
-    docker.image('maven:3.8.5-eclipse-temurin-8-alpine').inside('-v /root/.m2:/root/.m2') {
+    docker.image('eclipse-temurin:11-jdk-alpine').inside('-v /root/.m2:/root/.m2') {
 
         stage('Build') {
             echo pwd
