@@ -1,5 +1,5 @@
 node {
-    docker.image('maven:4.0.0').inside('-v /root/.m2:/root/.m2') {
+    docker.image('maven:3.8.5-eclipse-temurin-8-alpine').inside('-v /root/.m2:/root/.m2') {
 
         stage('Build') {
             checkout scm
@@ -8,7 +8,6 @@ node {
 
         stage('Test') {
             sh 'mvn test'
-            
             junit 'target/surefire-reports/*.xml'
         }
     }
