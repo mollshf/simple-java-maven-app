@@ -10,5 +10,14 @@ node {
             sh 'mvn test'
             junit 'target/surefire-reports/*.xml'
         }
+
+        stage('Manual Approval') {
+            input message: 'Lanjutkan ke tahap Selanjutnya?? (Klik "Proceed" untuk melanjutkan)'
+        }
+
+        stage('deliver') {
+            sh './jenkins/scripts/deliver.sh'
+            sleep 60
+        }
     }
 }
